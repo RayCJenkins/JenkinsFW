@@ -1,0 +1,10 @@
+c:\git\JenkinsFW\bin\Debug\netcoreapp2.0\JenkinsFW.deps.json
+c:\git\JenkinsFW\bin\Debug\netcoreapp2.0\JenkinsFW.runtimeconfig.json
+c:\git\JenkinsFW\bin\Debug\netcoreapp2.0\JenkinsFW.runtimeconfig.dev.json
+c:\git\JenkinsFW\bin\Debug\netcoreapp2.0\JenkinsFW.dll
+c:\git\JenkinsFW\bin\Debug\netcoreapp2.0\JenkinsFW.pdb
+c:\git\JenkinsFW\obj\Debug\netcoreapp2.0\JenkinsFW.csproj.CoreCompileInputs.cache
+c:\git\JenkinsFW\obj\Debug\netcoreapp2.0\JenkinsFW.AssemblyInfoInputs.cache
+c:\git\JenkinsFW\obj\Debug\netcoreapp2.0\JenkinsFW.AssemblyInfo.cs
+c:\git\JenkinsFW\obj\Debug\netcoreapp2.0\JenkinsFW.dll
+c:\git\JenkinsFW\obj\Debug\netcoreapp2.0\JenkinsFW.pdb
