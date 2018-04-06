@@ -12533,29 +12533,30 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Ray\\.nuget\\packages\\": {},
+    "C:\\Users\\Russell.Jenkins\\.nuget\\packages\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "c:\\git\\JenkinsFW\\JenkinsFW.csproj",
+      "projectUniqueName": "C:\\Personal\\JenkinsFW\\JenkinsFW.csproj",
       "projectName": "JenkinsFW",
-      "projectPath": "c:\\git\\JenkinsFW\\JenkinsFW.csproj",
-      "packagesPath": "C:\\Users\\Ray\\.nuget\\packages\\",
-      "outputPath": "c:\\git\\JenkinsFW\\obj\\",
+      "projectPath": "C:\\Personal\\JenkinsFW\\JenkinsFW.csproj",
+      "packagesPath": "C:\\Users\\Russell.Jenkins\\.nuget\\packages\\",
+      "outputPath": "C:\\Personal\\JenkinsFW\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\Ray\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Russell.Jenkins\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.0"
       ],
       "sources": {
-        "https://api.nuget.org/v3/index.json": {}
+        "\\\\corpfs01\\Dev\\NuGet": {},
+        "https://www.nuget.org/api/v2/": {}
       },
       "frameworks": {
         "netcoreapp2.0": {
