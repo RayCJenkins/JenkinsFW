@@ -29,28 +29,15 @@
         </div>
         <div>
             <span>Ingredients</span>
-            <span>+</span>
+            <span class="add-ingredient">+</span>
             <div>
                 <span>Name</span>
                 <span>Amount</span>
             </div>            
-            <div>
-                <input />
-                <input />
-                <span>x</span>
+            <div class="ingredient-list">
             </div>           
             <div>
-                <input />
-                <input />
-                <span>x</span>
-            </div>            
-            <div>
-                <input />
-                <input />
-                <span>x</span>
-            </div>
-            <div>
-                <span>+</span>
+                <span class="add-ingredient">+</span>
             </div>
         </div>
         <div>
@@ -66,3 +53,17 @@
         </div>
     </div>
 </div>
+<script>
+    var HookupRemoveClick = function(){
+        $('span.remove-ingredient').off('click');
+        $('span.remove-ingredient').on('click',function(){
+            $(this).closest('div').remove();
+        });
+    };
+    $('.add-ingredient').on('click', function(){
+        var el = document.createElement('div');
+        $(el).html('<input /><input /><span class="remove-ingredient">x</span>');
+        $('div.ingredient-list').append(el);
+        HookupRemoveClick();
+    });
+</script>
