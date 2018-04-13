@@ -2,34 +2,40 @@
     ViewData["Title"] = "Add Recipe";
 }
 
+<style>
+    .clickable{
+    cursor: pointer;
+}
+</style>
+
 <div>
     <div>
         <h2>Add Recipe</h2>
         <div>
             <span>Title</span>
-            <input />
+            <input id="Title"/>
         </div>
         <div>
             <span>Description</span>
             <div>
-            <textarea>Test</textarea>
+            <textarea id="Description">Test</textarea>
             </div>
         </div>
         <div>
             <span>Prep Time</span>
-            <input />
+            <input id="PrepTime"/>
         </div>
         <div>
             <span>Cook Time</span>
-            <input />
+            <input id="CookTime"/>
         </div>
         <div>
             <span>Servings</span>
-            <input />
+            <input id="Servings"/>
         </div>
         <div>
             <span>Ingredients</span>
-            <span class="add-ingredient">+</span>
+            <span class="add-ingredient clickable">+</span>
             <div>
                 <span>Name</span>
                 <span>Amount</span>
@@ -37,22 +43,26 @@
             <div class="ingredient-list">
             </div>           
             <div>
-                <span class="add-ingredient">+</span>
+                <span class="add-ingredient clickable">+</span>
             </div>
         </div>
         <div>
             <span>Instructions</span>
             <div>
-            <textarea>Test</textarea>
+            <textarea id="Instructions">Test</textarea>
             </div>
         </div>
         <div>
             <input type="button" value="Upload Pic"/>
-            <input type="button" value="Save"/>
+            <input type="button" value="Save" id="savebutton"/>
             <input type="button" value="Cancel"/>
         </div>
     </div>
 </div>
+
+
+@section Scripts
+{
 <script>
     var HookupRemoveClick = function(){
         $('span.remove-ingredient').off('click');
@@ -62,8 +72,34 @@
     };
     $('.add-ingredient').on('click', function(){
         var el = document.createElement('div');
-        $(el).html('<input /><input /><span class="remove-ingredient">x</span>');
+        el.setAttribute("class", "ingredient");
+        $(el).html('<input class="ingredient-name"/><input class="ingredient-amount"/><span class="remove-ingredient clickable">x</span>');
         $('div.ingredient-list').append(el);
         HookupRemoveClick();
     });
+    $('#savebutton').on('click', function(){
+        var title = $('#Title').val();
+        var description = $('#Description').val();
+        var preptime = $('#PrepTime').val();
+        var cooktime = $('#CookTime').val();
+        var servings = $('#Servings').val();
+        var instructions = $('#Instructions').val();
+        var ingredients = $('.ingredient').map(function(){
+            return {
+                Name: $(this).find('.ingredient-name').val(),
+                Amount: $(this).find('.ingredient-amount').val()
+            };
+        }).toArray();
+        var postData = {
+            Title: title,
+            Description: description,
+            PrepTime: preptime,
+            CookTime: cooktime,
+            Servings: servings,
+            Instructions: instructions,
+            Ingredients: ingredients
+        };
+        alert(JSON.stringify(postData));
+    });
 </script>
+}
