@@ -25,13 +25,30 @@ $('#savebutton').on('click', function(){
         };
     }).toArray();
     var postData = {
-        Title: title,
-        Description: description,
-        PrepTime: preptime,
-        CookTime: cooktime,
-        Servings: servings,
-        Instructions: instructions,
-        Ingredients: ingredients
+        title: title,
+        description: description,
+        prepTime: preptime,
+        cookTime: cooktime,
+        servings: servings,
+        instructions: instructions,
+        ingredients: ingredients
     };
-    alert(JSON.stringify(postData));
+    
+    $.ajax(
+        {
+            url:'/addrecipe/saverecipe',
+            type: 'POST',
+            contentType: 'application/json; charset=UTF-8',
+            data: JSON.stringify(postData),
+            beforeSend: function(){
+                alert('BeforeSend:'+JSON.stringify(postData));
+            },
+            success: function(response){
+                alert('Success: '+response);
+            },
+            error: function(response){
+                alert('Error: '+response);
+            }
+        }
+    )
 });
