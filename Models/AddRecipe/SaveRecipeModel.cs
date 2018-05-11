@@ -2,13 +2,13 @@ namespace JenkinsFW.Models{
 
 public class SaveRecipeModel
 {
-       public string Title{get;set;}
-       public string Description{get;set;}
-       public string PrepTime{get;set;}
-       public string CookTime{get;set;}
-       public string Servings{get;set;}
-       public string Instructions{get;set;}
-       public SaveIngredientModel[] Ingredients{get;set;}
+       public string title{get;set;}
+       public string description{get;set;}
+       public string prepTime{get;set;}
+       public string cookTime{get;set;}
+       public string servings{get;set;}
+       public string instructions{get;set;}
+       public SaveIngredientModel[] ingredients{get;set;}
 }
 
 }

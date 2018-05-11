@@ -13,14 +13,14 @@ namespace JenkinsFW.Controllers
         } 
 
         [HttpPost]
-        public IActionResult SaveRecipe([FromBody] SaveRecipeModel data)
+        public IActionResult SaveRecipe(SaveRecipeModel data)
         {
-            // Console.WriteLine(string.Format("{0}: {1}:{2}; {3}:{4}; {5}:{6}; {7}:{8}; {9}:{10}; ",
-            // nameof(SaveRecipe), nameof(data.Title), data.Title,
-            // nameof(data.Description), data.Description,
-            // nameof(data.PrepTime), data.PrepTime,
-            // nameof(data.CookTime), data.CookTime,
-            // nameof(data.Instructions), data.Instructions));
+            Console.WriteLine(string.Format("{0}: {1}:{2}; {3}:{4}; {5}:{6}; {7}:{8}; {9}:{10}; ",
+            nameof(SaveRecipe), nameof(data.title), data.title,
+            nameof(data.description), data.description,
+            nameof(data.prepTime), data.prepTime,
+            nameof(data.cookTime), data.cookTime,
+            nameof(data.instructions), data.instructions));
             return new JsonResult(data);
         }
     }

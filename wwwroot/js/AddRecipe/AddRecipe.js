@@ -36,9 +36,10 @@ $('#savebutton').on('click', function(){
     
     $.ajax(
         {
-            url:'/addrecipe/saverecipe',
+            url:'/addrecipe/saverecipe/',
             type: 'POST',
-            contentType: 'application/json; charset=UTF-8',
+            headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+            //contentType: 'application/json; charset=UTF-8',
             data: JSON.stringify(postData),
             beforeSend: function(){
                 alert('BeforeSend:'+JSON.stringify(postData));
