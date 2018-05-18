@@ -8,7 +8,7 @@ public class SaveRecipeModel
        public string cookTime{get;set;}
        public string servings{get;set;}
        public string instructions{get;set;}
-    //    public SaveIngredientModel[] ingredients{get;set;}
+       public SaveIngredientModel[] ingredients{get;set;}
 }
 
 }
