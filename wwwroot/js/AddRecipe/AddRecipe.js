@@ -24,7 +24,7 @@ $('#savebutton').on('click', function(){
             Amount: $(this).find('.ingredient-amount').val()
         };
     }).toArray();
-    var postData = {
+    var postData = { 
         title: title,
         description: description,
         prepTime: preptime,
@@ -45,10 +45,10 @@ $('#savebutton').on('click', function(){
                 alert('BeforeSend:'+JSON.stringify(postData));
             },
             success: function(response){
-                alert('Success: '+response);
+                alert('Success: '+JSON.stringify(response));
             },
             error: function(response){
-                alert('Error: '+response);
+                alert('Error: '+JSON.stringify(response));
             }
         }
     )
