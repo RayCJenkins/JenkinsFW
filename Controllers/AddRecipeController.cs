@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using JenkinsFW.Models;
 using System.IO;
 using System;
+using JenkinsFW.Data;
 
 namespace JenkinsFW.Controllers
 {
@@ -22,6 +23,8 @@ namespace JenkinsFW.Controllers
             nameof(data.prepTime), data.prepTime,
             nameof(data.cookTime), data.cookTime,
             nameof(data.instructions), data.instructions));
+            DBManager db = new DBManager();
+            db.loadrecipe();
             return new JsonResult(data);
         }
     }
