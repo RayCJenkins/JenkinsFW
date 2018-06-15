@@ -2,8 +2,8 @@ namespace JenkinsFW.Models{
 public class SaveIngredientModel
 {
  public string name{get;set;}
- public int amount{get;set;}
- //public int UnitID{get;set;}   
+ public string amount{get;set;}
+ public int displayOrder{get;set;}   
 }
 
 }

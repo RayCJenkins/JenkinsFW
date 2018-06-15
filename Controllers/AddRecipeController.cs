@@ -24,7 +24,7 @@ namespace JenkinsFW.Controllers
             nameof(data.cookTime), data.cookTime,
             nameof(data.instructions), data.instructions));
             DBManager db = new DBManager();
-            db.loadrecipe();
+            db.SaveRecipe(data);
             return new JsonResult(data);
         }
     }
