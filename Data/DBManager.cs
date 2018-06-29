@@ -35,7 +35,16 @@ namespace JenkinsFW.Data{
             cmd.Parameters.Add(new SqliteParameter("@Servings", data.servings));
             cmd.Parameters.Add(new SqliteParameter("@Instructions", data.instructions));
             cmd.ExecuteNonQuery();
+            
+            var cmd2 = new SqliteCommand("select last_insert_rowid()",mxDB);
+            var recipeid = cmd2.ExecuteScalar();
+            // if (!recipeid.HasValue)
+            // {
+            //     throw new InvalidOperationException("Recipe Insert failed to return ID");
+            // }
             mxDB.Close();
+            Console.WriteLine(string.Format("{0}: {1}:{2}; ",
+            nameof(SaveRecipe), nameof(recipeid), recipeid));
         }
     }
 }

@@ -42,10 +42,11 @@ $('#savebutton').on('click', function(){
             //contentType: 'application/json; charset=UTF-8',
             data: JSON.stringify(postData),
             beforeSend: function(){
-                alert('BeforeSend:'+JSON.stringify(postData));
+                //alert('BeforeSend:'+JSON.stringify(postData));
             },
             success: function(response){
-                alert('Success: '+JSON.stringify(response));
+                alert('Recipe Saved!');
+                $('.recipe-field').val('');
             },
             error: function(response){
                 alert('Error: '+JSON.stringify(response));
