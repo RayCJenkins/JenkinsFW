@@ -25,26 +25,41 @@ namespace JenkinsFW.Data{
         public void SaveRecipe(SaveRecipeModel data)
         {
             mxDB.Open();
-            //string sql = "insert into ingredients (RecipeID, Name, Amount, DisplayOrder) values (@RecipeID, @Name, @Amount, @DisplayOrder)"
-            string sql = "insert into Recipes (Title, Description, PrepTime, CookTime, Servings, Instructions) values (@Title, @Description, @PrepTime, @CookTime, @Servings, @Instructions)";
-            SqliteCommand cmd = new SqliteCommand(sql,mxDB);
-            cmd.Parameters.Add(new SqliteParameter("@Title", data.title));
-            cmd.Parameters.Add(new SqliteParameter("@Description", data.description));
-            cmd.Parameters.Add(new SqliteParameter("@PrepTime", data.prepTime));
-            cmd.Parameters.Add(new SqliteParameter("@CookTime", data.cookTime));
-            cmd.Parameters.Add(new SqliteParameter("@Servings", data.servings));
-            cmd.Parameters.Add(new SqliteParameter("@Instructions", data.instructions));
-            cmd.ExecuteNonQuery();
-            
-            var cmd2 = new SqliteCommand("select last_insert_rowid()",mxDB);
-            var recipeid = cmd2.ExecuteScalar();
-            // if (!recipeid.HasValue)
-            // {
-            //     throw new InvalidOperationException("Recipe Insert failed to return ID");
-            // }
-            mxDB.Close();
-            Console.WriteLine(string.Format("{0}: {1}:{2}; ",
-            nameof(SaveRecipe), nameof(recipeid), recipeid));
+            var tran = mxDB.BeginTransaction();
+            try
+            {
+                string sql = "insert into Recipes (Title, Description, PrepTime, CookTime, Servings, Instructions) values (@Title, @Description, @PrepTime, @CookTime, @Servings, @Instructions)";
+                SqliteCommand cmd = new SqliteCommand(sql,mxDB,tran);
+                cmd.Parameters.Add(new SqliteParameter("@Title", data.title));
+                cmd.Parameters.Add(new SqliteParameter("@Description", data.description));
+                cmd.Parameters.Add(new SqliteParameter("@PrepTime", data.prepTime));
+                cmd.Parameters.Add(new SqliteParameter("@CookTime", data.cookTime));
+                cmd.Parameters.Add(new SqliteParameter("@Servings", data.servings));
+                cmd.Parameters.Add(new SqliteParameter("@Instructions", data.instructions));
+                cmd.ExecuteNonQuery();
+                
+                var cmd2 = new SqliteCommand("select last_insert_rowid()",mxDB,tran);
+                var recipeid = ((cmd2.ExecuteScalar() as long?).Value as int?).Value;
+                foreach(var i in data.ingredients)
+                {
+                    var icmd = new SqliteCommand("insert into ingredients (RecipeID, Name, Amount, DisplayOrder) values (@RecipeID, @Name, @Amount, @DisplayOrder)",mxDB,tran);
+                    icmd.Parameters.Add(new SqliteParameter("@RecipeID", recipeid));
+                    icmd.Parameters.Add(new SqliteParameter("@Name", i.name));
+                    icmd.Parameters.Add(new SqliteParameter("@Amount", i.amount));
+                    icmd.Parameters.Add(new SqliteParameter("@DisplayOrder", i.displayOrder));
+                    icmd.ExecuteNonQuery();
+                }
+                tran.Commit();
+            }
+            catch(Exception e)
+            {
+                tran.Rollback();
+                Console.WriteLine(e.Message);
+            }
+            finally
+            {
+                mxDB.Close();
+            }
         }
     }
 }

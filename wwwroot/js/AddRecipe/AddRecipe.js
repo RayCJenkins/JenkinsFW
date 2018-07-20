@@ -47,6 +47,7 @@ $('#savebutton').on('click', function(){
             success: function(response){
                 alert('Recipe Saved!');
                 $('.recipe-field').val('');
+                $('div.ingredient').remove();
             },
             error: function(response){
                 alert('Error: '+JSON.stringify(response));
