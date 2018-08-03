@@ -2,57 +2,57 @@
     ViewData["Title"] = "Add Recipe";
 }
 
+
 <div>
+    <h2>Add Recipe</h2>
     <div>
-        <h2>Add Recipe</h2>
+        <span>Title</span>
+        <input id="Title" class="recipe-field"/>
+    </div>
+    <div>
+        <span>Description</span>
         <div>
-            <span>Title</span>
-            <input id="Title" class="recipe-field"/>
-        </div>
-        <div>
-            <span>Description</span>
-            <div>
-            <textarea id="Description" class="recipe-field"></textarea>
-            </div>
-        </div>
-        <div>
-            <span>Prep Time</span>
-            <input id="PrepTime" class="recipe-field"/>
-        </div>
-        <div>
-            <span>Cook Time</span>
-            <input id="CookTime" class="recipe-field"/>
-        </div>
-        <div>
-            <span>Servings</span>
-            <input id="Servings" class="recipe-field"/>
-        </div>
-        <div>
-            <span>Ingredients</span>
-            <span class="add-ingredient clickable">+</span>
-            <div>
-                <span>Name</span>
-                <span>Amount</span>
-            </div>            
-            <div class="ingredient-list">
-            </div>           
-            <div>
-                <span class="add-ingredient clickable">+</span>
-            </div>
-        </div>
-        <div>
-            <span>Instructions</span>
-            <div>
-            <textarea id="Instructions" class="recipe-field"></textarea>
-            </div>
-        </div>
-        <div>
-            <input type="button" value="Upload Pic"/>
-            <input type="button" value="Save" id="savebutton"/>
-            <input type="button" value="Cancel"/>
+        <textarea id="Description" class="recipe-field"></textarea>
         </div>
     </div>
+    <div>
+        <span>Prep Time</span>
+        <input id="PrepTime" class="recipe-field"/>
+    </div>
+    <div>
+        <span>Cook Time</span>
+        <input id="CookTime" class="recipe-field"/>
+    </div>
+    <div>
+        <span>Servings</span>
+        <input id="Servings" class="recipe-field"/>
+    </div>
+    <div>
+        <span>Ingredients</span>
+        <span class="add-ingredient clickable">+</span>
+        <div>
+            <span>Name</span>
+            <span>Amount</span>
+        </div>            
+        <div class="ingredient-list">
+        </div>           
+        <div>
+            <span class="add-ingredient clickable">+</span>
+        </div>
+    </div>
+    <div>
+        <span>Instructions</span>
+        <div>
+        <textarea id="Instructions" class="recipe-field"></textarea>
+        </div>
+    </div>
+    <div>
+        <input type="button" value="Upload Pic"/>
+        <input type="button" value="Save" id="savebutton"/>
+        <input type="button" value="Cancel"/>
+    </div>
 </div>
+
 
 
 @section Scripts

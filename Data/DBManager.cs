@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using JenkinsFW.Models;
 using Microsoft.Data.Sqlite;
 
@@ -11,18 +12,7 @@ namespace JenkinsFW.Data{
             mxDB=new SqliteConnection("Data Source=JenkinsFW.sqlite;");
         }
 
-        public void loadrecipe()
-        {
-            mxDB.Open();
-            SqliteCommand cmd = new SqliteCommand("select * from measuringunits",mxDB);
-            SqliteDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                Console.WriteLine(reader["Unit"]+" "+reader["ID"]);
-            }
-        }
-
-        public void SaveRecipe(SaveRecipeModel data)
+        public void SaveRecipe(RecipeModel data)
         {
             mxDB.Open();
             var tran = mxDB.BeginTransaction();
@@ -39,7 +29,7 @@ namespace JenkinsFW.Data{
                 cmd.ExecuteNonQuery();
                 
                 var cmd2 = new SqliteCommand("select last_insert_rowid()",mxDB,tran);
-                var recipeid = ((cmd2.ExecuteScalar() as long?).Value as int?).Value;
+                var recipeid = Convert.ToInt32(cmd2.ExecuteScalar());
                 foreach(var i in data.ingredients)
                 {
                     var icmd = new SqliteCommand("insert into ingredients (RecipeID, Name, Amount, DisplayOrder) values (@RecipeID, @Name, @Amount, @DisplayOrder)",mxDB,tran);
@@ -61,5 +51,16 @@ namespace JenkinsFW.Data{
                 mxDB.Close();
             }
         }
+
+        public List<RecipeModel> LoadRecipes()
+        {
+            mxDB.Open();
+            SqliteCommand cmd = new SqliteCommand("select * from measuringunits",mxDB);
+            SqliteDataReader reader = cmd.ExecuteReader();
+
+            return new List<RecipeModel>();
+
+        }
+
     }
 }
