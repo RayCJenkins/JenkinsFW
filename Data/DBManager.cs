@@ -52,14 +52,27 @@ namespace JenkinsFW.Data{
             }
         }
 
-        public List<RecipeModel> LoadRecipes()
+        public List<RecipeListItem> LoadRecipes()
         {
             mxDB.Open();
-            SqliteCommand cmd = new SqliteCommand("select * from measuringunits",mxDB);
+            SqliteCommand cmd = new SqliteCommand("select ID, Title, Description, PrepTime, CookTime, Servings from Recipes order by Title",mxDB);
             SqliteDataReader reader = cmd.ExecuteReader();
+            var Result = new List<RecipeListItem>();
 
-            return new List<RecipeModel>();
+            while (reader.Read())
+            {
+                var newRecipe = new RecipeListItem{
+                    description = Convert.ToString(reader["Description"]),
+                    ID = Convert.ToInt32(reader["ID"]),
+                    title = Convert.ToString(reader["Title"]),
+                    prepTime = Convert.ToString(reader["PrepTime"]),
+                    cookTime = Convert.ToString(reader["CookTime"]),
+                    servings = Convert.ToString(reader["Servings"])
+                };
+                Result.Add(newRecipe);
+            } 
 
+            return Result;
         }
 
     }

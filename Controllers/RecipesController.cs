@@ -10,8 +10,14 @@ namespace JenkinsFW.Controllers
     {
         public IActionResult Index()
         {
-            return View();
+            DBManager db = new DBManager();
+            var recipe_list = db.LoadRecipes();
+            var model = new RecipeListViewModel{
+                Recipes = recipe_list
+            };
+            return View(model);
         } 
+
     }
 }
 

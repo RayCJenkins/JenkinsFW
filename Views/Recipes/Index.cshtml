@@ -1,8 +1,18 @@
+@model JenkinsFW.Models.RecipeListViewModel
 @{
     ViewData["Title"] = "Recipes";
 }
 
 <div>
     <h2>Recipes</h2>
+    @foreach(var item in Model.Recipes)
+    {
+        <div>
+            <span>@item.title </span>
+            <span>@item.description </span>
+            <span>@item.prepTime </span>
+            <span>@item.cookTime </span>
+        </div>
+    }
 
 </div>
