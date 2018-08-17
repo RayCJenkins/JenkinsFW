@@ -5,14 +5,50 @@
 
 <div>
     <h2>Recipes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>
+                    <span>Title</span>
+                </th>
+                <th>
+                    <span>Preparation Time</span>
+                </th>
+                <th>
+                    <span>Cook Time</span>
+                </th>
+                <th>
+                    <span>Servings</span>
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+
+
     @foreach(var item in Model.Recipes)
     {
-        <div>
-            <span>@item.title </span>
-            <span>@item.description </span>
+        <tr>
+            <td>
+            <span title="@item.description">@item.title </span>
+            </td>
+            <td>
             <span>@item.prepTime </span>
+            </td>
+            <td>
             <span>@item.cookTime </span>
-        </div>
+            </td>
+            <td>
+                <span>@item.servings</span>
+            </td>
+            <td>
+                <span>P</span>
+                <span>E</span>
+                <span>X</span>
+            </td>
+        </tr>
     }
+        </tbody>
+    </table>
 
 </div>

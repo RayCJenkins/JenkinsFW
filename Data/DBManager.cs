@@ -55,7 +55,7 @@ namespace JenkinsFW.Data{
         public List<RecipeListItem> LoadRecipes()
         {
             mxDB.Open();
-            SqliteCommand cmd = new SqliteCommand("select ID, Title, Description, PrepTime, CookTime, Servings from Recipes order by Title",mxDB);
+            SqliteCommand cmd = new SqliteCommand("select ID, Title, Description, PrepTime, CookTime, Servings from Recipes order by Title COLLATE NOCASE",mxDB);
             SqliteDataReader reader = cmd.ExecuteReader();
             var Result = new List<RecipeListItem>();
 
