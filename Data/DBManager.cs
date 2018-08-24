@@ -52,6 +52,15 @@ namespace JenkinsFW.Data{
             }
         }
 
+        public RecipeModel LoadRecipe(int recipeid)
+        {
+            mxDB.Open();
+            SqliteCommand cmd = new SqliteCommand("select ID, Title, Description, PrepTime, CookTime, Servings from Recipes where id = @Recipeid",mxDB);
+            cmd.Parameters.Add(new SqliteParameter("@Recipeid", recipeid));    
+            SqliteDataReader reader = cmd.ExecuteReader();
+
+        }
+
         public List<RecipeListItem> LoadRecipes()
         {
             mxDB.Open();

@@ -6,12 +6,17 @@ using JenkinsFW.Data;
 
 namespace JenkinsFW.Controllers
 {
-    public class AddRecipeController : Controller
+    public class AddEditRecipeController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(int? id)
         {
             return View();
         } 
+
+        public IActionResult Load(int? id)
+        {
+            
+        }
 
         [HttpPost]
         public IActionResult SaveRecipe([FromBody]RecipeModel data)

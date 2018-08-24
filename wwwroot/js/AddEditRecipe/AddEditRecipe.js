@@ -36,7 +36,7 @@ $('#savebutton').on('click', function(){
     
     $.ajax(
         {
-            url:'/addrecipe/saverecipe/',
+            url:'/addeditrecipe/saverecipe/',
             type: 'POST',
             headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
             //contentType: 'application/json; charset=UTF-8',
